@@ -1,6 +1,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/Dashboard.dart';
 import 'package:flutter_firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:flutter_firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
 
@@ -19,8 +20,6 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isSigning = false;
 
-
-
   final FirebaseAuthService _auth = FirebaseAuthService();
 
   TextEditingController _emailController = TextEditingController();
@@ -33,7 +32,6 @@ class _LoginPageState extends State<LoginPage> {
     _passwordController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +73,13 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(child:Text("Login",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                  child: Center(
+                    child:
+                    Text("Login",
+                      style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 20,),
@@ -85,13 +89,12 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(width: 5,),
                   GestureDetector(
                       onTap: (){
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SignUpPage()), (route) => false);
+                        Navigator.pushAndRemoveUntil(context,
+                            MaterialPageRoute(builder: (context) => SignUpPage()), (route) => false);
                       },
                       child: Text("Sign Up",style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),))
                 ],
               )
-
-
             ],
           ),
         ),
@@ -108,7 +111,9 @@ class _LoginPageState extends State<LoginPage> {
 
     if (user!= null){
       print("User is successfully signedIn");
-      Navigator.pushNamed(context, "/home");
+      // Navigator.pushNamed(context, "/home");
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (context) => Dashboard()), (route) => false);
     } else{
       print("Some error happend");
     }

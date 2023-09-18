@@ -7,6 +7,8 @@ import 'package:flutter_firebase/features/user_auth/presentation/pages/home_page
 import 'package:flutter_firebase/features/user_auth/presentation/pages/login_page.dart';
 import 'package:flutter_firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 
+import 'Dashboard.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
@@ -40,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/signUp': (context) => SignUpPage(),
         '/home': (context) => HomePage(),
+        '/Dashboard':(context)=>Dashboard(),
       },
     );
   }

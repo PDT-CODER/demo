@@ -5,6 +5,8 @@ import 'package:flutter_firebase/features/user_auth/firebase_auth_implementation
 import 'package:flutter_firebase/features/user_auth/presentation/pages/login_page.dart';
 import 'package:flutter_firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
 
+import '../../../../Dashboard.dart';
+
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -120,7 +122,9 @@ controller: _passwordController,
 
     if (user!= null){
       print("User is successfully created");
-      Navigator.pushNamed(context, "/home");
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (context) => Dashboard()), (route) => false);
+
     } else{
       print("Some error happend");
     }
